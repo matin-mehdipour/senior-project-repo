@@ -1,5 +1,6 @@
 package matinmehdipour.medli;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,6 +19,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+
+import com.parse.Parse;
+import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -67,6 +71,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+
     }
 
 
@@ -92,9 +97,28 @@ public class MainActivity extends AppCompatActivity
             return true;
         }
 
+        if(id == R.id.sign_out_action)
+        {
+           logout();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
+    private void logout()
+    {
+        ParseUser.logOut();
+
+       ParseUser parseUser =  ParseUser.getCurrentUser();
+        reloadLoginScreen();
+    }
+
+    private void reloadLoginScreen()
+    {
+        Intent intent = new Intent(this, LoginActivity2.class);
+        startActivity(intent);
+        finish();
+    }
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
