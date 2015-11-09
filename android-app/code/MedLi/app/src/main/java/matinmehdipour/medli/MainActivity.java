@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity
 
     private void reloadLoginScreen()
     {
-        Intent intent = new Intent(this, LoginActivity2.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
@@ -195,10 +195,10 @@ public class MainActivity extends AppCompatActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState)
         {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
+          TextView tv = new TextView(getActivity());
+            return tv;
         }
     }
+
+
 }
