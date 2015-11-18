@@ -1,4 +1,4 @@
-package matinmehdipour.medli;
+package matinmehdipour.medli.login;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+
+import matinmehdipour.medli.R;
 
 /**
  * Created by matt on 11/6/15.

@@ -1,13 +1,14 @@
-package matinmehdipour.medli;
+package matinmehdipour.medli.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
 
 import com.parse.ParseUser;
+
+import matinmehdipour.medli.MainActivity;
+import matinmehdipour.medli.R;
 
 /**
  * A login screen that offers login via email/password.

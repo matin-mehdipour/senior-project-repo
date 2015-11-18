@@ -1,6 +1,5 @@
-package matinmehdipour.medli;
+package matinmehdipour.medli.setupwizard;
 
-import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,12 +19,9 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-import com.parse.ParseUser;
+import matinmehdipour.medli.R;
 
-import matinmehdipour.medli.login.AccountFragment;
-import matinmehdipour.medli.login.LoginActivity;
-
-public class MainActivity extends AppCompatActivity
+public class SetupActivity extends AppCompatActivity
 {
 
     /**
@@ -47,7 +43,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_setup);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -73,7 +69,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-
     }
 
 
@@ -81,7 +76,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_setup, menu);
         return true;
     }
 
@@ -99,28 +94,9 @@ public class MainActivity extends AppCompatActivity
             return true;
         }
 
-        if(id == R.id.sign_out_action)
-        {
-           logout();
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
-    private void logout()
-    {
-        ParseUser.logOut();
-
-       ParseUser parseUser =  ParseUser.getCurrentUser();
-        reloadLoginScreen();
-    }
-
-    private void reloadLoginScreen()
-    {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        finish();
-    }
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -137,10 +113,9 @@ public class MainActivity extends AppCompatActivity
         @Override
         public Fragment getItem(int position)
         {
-            if(position == 2)
-                return new AccountFragment();
-            else
-                return PlaceholderFragment.newInstance(position);
+            // getItem is called to instantiate the fragment for the given page.
+            // Return a PlaceholderFragment (defined as a static inner class below).
+            return PlaceholderFragment.newInstance(position + 1);
         }
 
         @Override
@@ -160,7 +135,7 @@ public class MainActivity extends AppCompatActivity
                 case 1:
                     return "SECTION 2";
                 case 2:
-                    return "Account";
+                    return "SECTION 3";
             }
             return null;
         }
@@ -198,10 +173,10 @@ public class MainActivity extends AppCompatActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState)
         {
-          TextView tv = new TextView(getActivity());
-            return tv;
+            View rootView = inflater.inflate(R.layout.fragment_setup, container, false);
+            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            return rootView;
         }
     }
-
-
 }

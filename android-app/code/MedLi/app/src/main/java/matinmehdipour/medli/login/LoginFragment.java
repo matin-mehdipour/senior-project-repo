@@ -1,4 +1,4 @@
-package matinmehdipour.medli;
+package matinmehdipour.medli.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,9 @@ import android.widget.EditText;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+
+import matinmehdipour.medli.MainActivity;
+import matinmehdipour.medli.R;
 
 /**
  * Created by matt on 11/6/15.
