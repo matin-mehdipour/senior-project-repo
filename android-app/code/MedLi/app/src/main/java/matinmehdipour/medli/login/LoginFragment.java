@@ -73,9 +73,17 @@ public class LoginFragment extends Fragment implements View.OnClickListener
                 {
                     if(e == null)
                     {
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                        startActivity(intent);
-                        getActivity().finish();
+                        boolean firstTime = parseUser.getBoolean("first_time");
+                        if(firstTime)
+                        {
+
+                        }
+                        else
+                        {
+                            Intent intent = new Intent(getActivity(), MainActivity.class);
+                            startActivity(intent);
+                            getActivity().finish();
+                        }
                     }
                 }
             });

@@ -94,7 +94,8 @@ public class RegisterFragment extends Fragment
         parseUser.setUsername(email);
         parseUser.setEmail(email);
         parseUser.put("full_name", fullName);
-        parseUser.put("account_type", accountType);
+        parseUser.put("first_time", true);
+        parseUser.put("setup_complete", false);
         parseUser.setPassword(password);
         parseUser.signUpInBackground(new SignUpCallback()
         {

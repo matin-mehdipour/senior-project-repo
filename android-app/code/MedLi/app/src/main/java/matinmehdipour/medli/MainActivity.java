@@ -62,7 +62,9 @@ public class MainActivity extends AppCompatActivity
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -70,6 +72,30 @@ public class MainActivity extends AppCompatActivity
             {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener()
+        {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab)
+            {
+                if(tab.getPosition() != 0)
+                    fab.hide();
+                else
+                    fab.show();
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab)
+            {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab)
+            {
+
             }
         });
 
@@ -156,9 +182,9 @@ public class MainActivity extends AppCompatActivity
             switch (position)
             {
                 case 0:
-                    return "SECTION 1";
+                    return "Available Licenses";
                 case 1:
-                    return "SECTION 2";
+                    return "Purchased Licenses";
                 case 2:
                     return "Account";
             }
