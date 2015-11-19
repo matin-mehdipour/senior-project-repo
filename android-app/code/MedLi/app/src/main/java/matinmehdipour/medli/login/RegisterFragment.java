@@ -48,7 +48,6 @@ public class RegisterFragment extends Fragment
         v = inflater.inflate(R.layout.account_register_fragment, container, false);
 
 
-        fullNameET = (EditText)v.findViewById(R.id.full_name_name_et);
         emailET = (EditText)v.findViewById(R.id.email_et_signin);
         passwordET = (EditText)v.findViewById(R.id.password_et);
         confirmPwET = (EditText)v.findViewById(R.id.confirm_password_et);
@@ -61,7 +60,6 @@ public class RegisterFragment extends Fragment
                 new ArrayAdapter<String>(getActivity(),
                         android.R.layout.simple_spinner_dropdown_item, accountTypeArray);
 
-        accountTypeSpinner.setAdapter(arrayAdapter);
 
         registerButton = (Button)v.findViewById(R.id.register_button);
         registerButton.setOnClickListener(new View.OnClickListener()
@@ -84,16 +82,13 @@ public class RegisterFragment extends Fragment
 
     private void doRegister()
     {
-        String fullName = fullNameET.getText().toString();
         final String email = emailET.getText().toString();
         String password = passwordET.getText().toString();
         String confirmPW = confirmPwET.getText().toString();
-        String accountType = accountTypeSpinner.getSelectedItem().toString();
 
         ParseUser parseUser = new ParseUser();
         parseUser.setUsername(email);
         parseUser.setEmail(email);
-        parseUser.put("full_name", fullName);
         parseUser.put("first_time", true);
         parseUser.put("setup_complete", false);
         parseUser.setPassword(password);

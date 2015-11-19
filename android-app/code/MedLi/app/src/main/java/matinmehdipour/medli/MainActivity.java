@@ -22,7 +22,6 @@ import android.widget.TextView;
 
 import com.parse.ParseUser;
 
-import matinmehdipour.medli.login.AccountFragment;
 import matinmehdipour.medli.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        final TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
 
@@ -75,15 +74,17 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener()
+        /*tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener()
         {
             @Override
             public void onTabSelected(TabLayout.Tab tab)
             {
-                if(tab.getPosition() != 0)
+                if (tab.getPosition() != 0)
                     fab.hide();
                 else
                     fab.show();
+
+
             }
 
             @Override
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-
+*/
 
     }
 
@@ -163,7 +164,9 @@ public class MainActivity extends AppCompatActivity
         @Override
         public Fragment getItem(int position)
         {
-            if(position == 2)
+            if(position == 0)
+                return new AvailableLicenseFragment();
+            else if(position == 2)
                 return new AccountFragment();
             else
                 return PlaceholderFragment.newInstance(position);

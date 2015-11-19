@@ -1,4 +1,4 @@
-package matinmehdipour.medli.login;
+package matinmehdipour.medli;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
